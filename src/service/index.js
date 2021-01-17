@@ -85,11 +85,50 @@ export const fetchMovieByGenre = async (genre_id) => {
 }
 
 export const fetchPersons = async () => {
-  
+  try {
+    const { data } = await axios.get(personUrl, {
+      params: {
+        api_key: apiKey
+      }
+    });
+    const modifiedData = data['results'].map((p) => ({
+      id: p['id'],
+      popularity: p['popularity'],
+
+      name: p['name'],
+      profileImg: 'https://image.tmdb.org/t/p/w200' + p['profile_path'],
+      known: p['known_for_department']
+    }));
+    return modifiedData;
+  } catch(err) {
+    console.error('Oops! There is an error in fetchPersons: ', err);
+  }
 }
 
 export const fetchTopratedMovie = async () => {
-  
+  try{
+    const { data } = await axios.get(topratedUrl, {
+      params: {
+        api_key: apiKey,
+        language: 'en_US',
+        page: 1
+      }
+    })
+    const posterUrl = 'https://image.tmdb.org/t/p/original/';
+    const modifiedData = data['results'].map((m) => ({
+      id: m.id,
+      backPoster: posterUrl + m.backdrop_path,
+      popularity: m.popularity,
+      title: m.title,
+      poster: posterUrl + m.poster_path,
+      overview: m.overview,
+      rating: m.vote_average
+    }));
+    
+    return modifiedData;
+  } catch(err) {
+    console.error('Oops! There is an error in fetchTopratedMovie: ', err);
+  }
 }
 
 export const fetchMovieDetail = async () => {
