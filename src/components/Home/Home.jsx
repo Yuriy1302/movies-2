@@ -29,6 +29,10 @@ function Home() {
     fetchAPI();
   }, []);
 
+  const handleGenreClick = async (genre_id) => {
+    setMovieByGenre(await fetchMovieByGenre(genre_id))
+  }
+
   const movies = nowPlaying.slice(0, 5).map((item, index) => {
     return (
       <div key={index} className="div-item">
@@ -54,8 +58,12 @@ function Home() {
   const genreList = genres.map((item, index) => {
     return (
       <li className="list-inline-item" key={index}>
-        <button type="button" className="btn btn-outline-info">
-          {item.name}
+        <button
+          type="button"
+          className="btn btn-outline-info"
+          onClick={() => handleGenreClick(item.id)}
+        >
+            {item.name}
         </button>
       </li>
     )
@@ -80,7 +88,7 @@ function Home() {
 
   const trandingPersons = persons.slice(0, 4).map((p, index) => {
     return (
-      <div className="col-md-3 text-center">
+      <div className="col-md-3 text-center" key={index}>
         <img
           src={p.profileImg}
           alt={p.name}
@@ -137,6 +145,13 @@ function Home() {
         </div>
       </div>
 
+      <div className="row my-3">
+        <div className="col">
+          <div className="float-right">
+            <i className="bi bi-arrow-right-circle"></i>
+          </div>
+        </div>
+      </div>
       <div className="row mt-3">{movieList}</div>
 
       <div className="row mt-3">
@@ -147,6 +162,13 @@ function Home() {
         </div>
       </div>
 
+      <div className="row my-3">
+        <div className="col">
+          <div className="float-right">
+            <i className="bi bi-arrow-right-circle"></i>
+          </div>
+        </div>
+      </div>
       <div className="row mt-3">{trandingPersons}</div>
 
       <div className="row mt-3">
@@ -157,6 +179,13 @@ function Home() {
         </div>
       </div>
 
+      <div className="row my-3">
+        <div className="col">
+          <div className="float-right">
+            <i className="bi bi-arrow-right-circle"></i>
+          </div>
+        </div>
+      </div>
       <div className="row my-3">{topRatedList}</div>
 
       <hr className="mt-5" style={{ borderTop: '1px solid #5a606b' }} />
@@ -168,24 +197,47 @@ function Home() {
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel iure quae reprehenderit, exercitationem possimus libero sapiente incidunt totam eveniet harum id voluptatem facilis assumenda dolores, deserunt reiciendis cum nesciunt rerum.</p>
           <ul className="list-inline">
             <li className="list-inline-item">
-              <a href="/" syle={{ color: '#f4c10f' }} >
-                <i className="bi bi-facebook"></i>
+              <a href="/">
+                <i className="bi bi-facebook" style={{ color: '#f4c10f' }}></i>
               </a>
             </li>
             <li className="list-inline-item">
-              <a href="/" syle={{ color: '#f4c10f' }} >
-                <i className="bi bi-youtube"></i>
+              <a href="/">
+                <i className="bi bi-youtube" style={{ color: '#f4c10f' }}></i>
               </a>
             </li>
             <li className="list-inline-item">
-              <a href="/" syle={{ color: '#f4c10f' }} >
-                <i className="bi bi-twitter"></i>
+              <a href="/">
+                <i className="bi bi-twitter" style={{ color: '#f4c10f' }}></i>
               </a>
             </li>
             <li className="list-inline-item">
-              <a href="/" syle={{ color: '#f4c10f' }} >
-                <i className="bi bi-instagram"></i>
+              <a href="/">
+                <i className="bi bi-instagram" style={{ color: '#f4c10f' }}></i>
               </a>
+            </li>
+          </ul>
+        </div>
+        <div className="col-md-4 col-sm-6" style={{ color: '#5a606b' }}>
+          <h3>KEEP IN TOUCH</h3>
+          <ul className="list-unstyled">
+            <li>
+              <p>
+                <strong>
+                  <i className="bi bi-geo-alt-fill"></i> Address:</strong> city, state, country
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>
+                  <i className="bi bi-telephone-fill"></i> Phone:</strong> +7 000 000 00 00
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>
+                  <i className="bi bi-envelope-fill"></i> Email:</strong> info@infomail.com
+              </p>
             </li>
           </ul>
         </div>

@@ -21,3 +21,15 @@
   background-color: transparent;
   transition: all 0.3s;
 }
+
+.bi-arrow-right-circle {
+  color: #f4c10f;
+  font-size: 40px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.bi-arrow-right-circle:hover {
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
+}

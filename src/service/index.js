@@ -88,7 +88,7 @@ export const fetchPersons = async () => {
   try {
     const { data } = await axios.get(personUrl, {
       params: {
-        api_key: apiKey
+        api_key: apiKey,
       }
     });
     const modifiedData = data['results'].map((p) => ({
@@ -110,7 +110,7 @@ export const fetchTopratedMovie = async () => {
     const { data } = await axios.get(topratedUrl, {
       params: {
         api_key: apiKey,
-        language: 'en_US',
+        language: 'ru-RU',
         page: 1
       }
     })
@@ -131,19 +131,75 @@ export const fetchTopratedMovie = async () => {
   }
 }
 
-export const fetchMovieDetail = async () => {
-  
+export const fetchMovieDetail = async (id) => {
+  try {
+    const { data } = await axios.get(`${movieUrl}/${id}`, {
+      params: {
+        api_key: apiKey,
+        language: 'ru-RU'
+      }
+    });
+    return data;
+  } catch(err) {
+    console.error('Oops! There is an error in fetchMovieDetail: ', err);
+  }
 }
 
-export const fetchMovieVideos = async () => {
-  
+export const fetchMovieVideos = async (id) => {
+  try {
+    const { data } = await axios.get(`${movieUrl}/${id}/videos`, {
+      params: {
+        api_key: apiKey
+      }
+    });
+    return data['results'][0];
+  } catch(err) {
+    console.error('Oops! There is an error in fetchMovieVideos: ', err);
+  }
 }
 
-export const fetchCasts = async () => {
-  
+export const fetchCasts = async (id) => {
+  try {
+    const { data } = await axios.get(`${movieUrl}/${id}/credits`, {
+      params: {
+        api_key: apiKey
+      }
+    });
+    const modifiedData = data['cast'].map((c) => ({
+      id: c['cast_id'],
+      character: c['character'],
+      name: c['name'],
+      img: 'https://image.tmdb.org/t/p/w200' + c['profile_path'],
+    }));
+    return modifiedData;
+  } catch(err) {
+    console.error('Oops! There is an error in fetchCasts: ', err);
+  }
 }
 
-export const fetchSimilarMovie = async () => {
-  
+export const fetchSimilarMovie = async (id) => {
+  try {
+    const { data } = await axios.get(`${movieUrl}/${id}/similar`, {
+      params: {
+        api_key: apiKey,
+        language: 'en-US'
+      }
+    });
+    const posterUrl = 'https://image.tmdb.org/t/p/original/';
+    const modifiedData = data['results'].map((m) => ({
+      id: m.id,
+      backPoster: posterUrl + m.backdrop_path,
+      popularity: m.popularity,
+      title: m.title,
+      poster: posterUrl + m.poster_path,
+      overview: m.overview,
+      rating: m.vote_average
+    }));
+    
+    return modifiedData;
+    
+  } catch(err) {
+    console.error('Oops! There is an error in fetchSimilarMovie: ', err);
+  }
 }
 
