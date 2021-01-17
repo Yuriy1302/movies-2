@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/movies-2/static/css/main.28f5bcf4.chunk.css",
+    "main.js": "/movies-2/static/js/main.6cbcc56e.chunk.js",
+    "main.js.map": "/movies-2/static/js/main.6cbcc56e.chunk.js.map",
+    "runtime-main.js": "/movies-2/static/js/runtime-main.512dc380.js",
+    "runtime-main.js.map": "/movies-2/static/js/runtime-main.512dc380.js.map",
+    "static/css/2.369c8689.chunk.css": "/movies-2/static/css/2.369c8689.chunk.css",
+    "static/js/2.2fbcc343.chunk.js": "/movies-2/static/js/2.2fbcc343.chunk.js",
+    "static/js/2.2fbcc343.chunk.js.map": "/movies-2/static/js/2.2fbcc343.chunk.js.map",
+    "index.html": "/movies-2/index.html",
+    "static/css/2.369c8689.chunk.css.map": "/movies-2/static/css/2.369c8689.chunk.css.map",
+    "static/css/main.28f5bcf4.chunk.css.map": "/movies-2/static/css/main.28f5bcf4.chunk.css.map",
+    "static/js/2.2fbcc343.chunk.js.LICENSE.txt": "/movies-2/static/js/2.2fbcc343.chunk.js.LICENSE.txt",
+    "static/media/react-bootstrap-carousel.css": "/movies-2/static/media/react-bootstrap-carousel.f4133112.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.512dc380.js",
+    "static/css/2.369c8689.chunk.css",
+    "static/js/2.2fbcc343.chunk.js",
+    "static/css/main.28f5bcf4.chunk.css",
+    "static/js/main.6cbcc56e.chunk.js"
+  ]
+}
